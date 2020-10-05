@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import WebKit
 
 class ArticleViewController: UIViewController {
 
@@ -15,11 +14,17 @@ class ArticleViewController: UIViewController {
             guard let newsItem = newsItem else {
                 return
             }
+            print(newsItem.selftext)
             articleBody.text = newsItem.selftext
             
             if let height = newsItem.thumbnailHeight, let width = newsItem.thumbnailWidth {
                 imageWidth = width
                 imageHeight = height
+            }
+            if newsItem.thumbnail != "self" {
+                if let url = URL(string: newsItem.thumbnail) {
+                    imageView.loadImage(from: url)
+                }
             }
         }
     }
@@ -42,8 +47,7 @@ extension ArticleViewController {
         
         view.addSubview(articleBody)
         view.addSubview(imageView)
-        imageView.backgroundColor = .orange
-        articleBody.backgroundColor = .cyan
+
         articleBody.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
