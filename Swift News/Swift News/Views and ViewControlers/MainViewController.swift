@@ -84,6 +84,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId, for: indexPath)
         cell.textLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.title
+        cell.detailTextLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.thumbnail
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let item = viewModel.swiftNews?.data.children[indexPath.row].data
+        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            let articleViewController = ArticleViewController()
+            articleViewController.newsItem = item
+            
+            navigationController.pushViewController(articleViewController, animated: true)
+        }
     }
 }

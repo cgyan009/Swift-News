@@ -19,14 +19,24 @@ struct SwiftNews: Decodable {
         struct Child: Decodable {
             let kind: String
             let data: ChildData
-            
-            struct ChildData: Decodable {
-                let title: String
-                let url: String
-                let thumbnail: String
-                let thumbnailHeight: Int?
-                let thumbnailWidth: Int?
-            }
         }
+    }
+}
+
+struct ChildData: Codable {
+    let title: String
+    let url: String
+    let thumbnail: String
+    let thumbnailHeight: Int?
+    let thumbnailWidth: Int?
+    let selftext: String
+    
+    enum CodingKeys: String, CodingKey {
+        case thumbnailHeight = "thumbnail_height"
+        case thumbnailWidth = "thumbnail_width"
+        case selftext
+        case title
+        case url
+        case thumbnail
     }
 }
