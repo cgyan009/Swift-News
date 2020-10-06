@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DE89EE8E252B8CAD00533725 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE89EE8D252B8CAD00533725 /* ArticleViewController.swift */; };
 		DE89EE93252BA65C00533725 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE89EE92252BA65C00533725 /* UIImageView+Extensions.swift */; };
+		DE89EE98252BAD2000533725 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE89EE97252BAD2000533725 /* ArticleTableViewCell.swift */; };
 		DE9FE9BC252A0D22002872E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FE9BB252A0D22002872E2 /* AppDelegate.swift */; };
 		DE9FE9BE252A0D22002872E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9FE9BD252A0D22002872E2 /* SceneDelegate.swift */; };
 		DE9FE9C5252A0D23002872E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE9FE9C4252A0D23002872E2 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		DE89EE8D252B8CAD00533725 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		DE89EE92252BA65C00533725 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		DE89EE97252BAD2000533725 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		DE9FE9B8252A0D22002872E2 /* Swift News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9FE9BB252A0D22002872E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE9FE9BD252A0D22002872E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				DE9FE9FD252A1100002872E2 /* MainViewController.swift */,
 				DE89EE8D252B8CAD00533725 /* ArticleViewController.swift */,
+				DE89EE97252BAD2000533725 /* ArticleTableViewCell.swift */,
 			);
 			path = "Views and ViewControlers";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				DE9FE9FE252A1100002872E2 /* MainViewController.swift in Sources */,
 				DE9FEA09252A20AE002872E2 /* SwiftNews.swift in Sources */,
 				DE9FE9BC252A0D22002872E2 /* AppDelegate.swift in Sources */,
+				DE89EE98252BAD2000533725 /* ArticleTableViewCell.swift in Sources */,
 				DE89EE8E252B8CAD00533725 /* ArticleViewController.swift in Sources */,
 				DE9FEA14252A9345002872E2 /* NotificationName+Extensions.swift in Sources */,
 				DE9FE9BE252A0D22002872E2 /* SceneDelegate.swift in Sources */,

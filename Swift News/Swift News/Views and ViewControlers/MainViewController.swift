@@ -52,8 +52,9 @@ extension MainViewController {
         loadingDataUI.removeFromSuperview()
         newsTable.delegate = self
         newsTable.dataSource = self
-        newsTable.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cellId)
+        newsTable.register(ArticleTableViewCell.self, forCellReuseIdentifier: Constants.cellId)
         view.addSubview(newsTable)
+        newsTable.estimatedRowHeight = UITableView.automaticDimension
         
 
         newsTable.translatesAutoresizingMaskIntoConstraints = false
@@ -82,9 +83,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId, for: indexPath)
-        cell.textLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.title
-        cell.detailTextLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.thumbnail
+        let cell: ArticleTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId, for: indexPath) as! ArticleTableViewCell
+        cell.set(newsItem: (viewModel.swiftNews?.data.children[indexPath.row].data)!)
+        
+        
+//        cell.textLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.title
+//        cell.detailTextLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.thumbnail
         return cell
     }
     
@@ -98,5 +102,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             
             navigationController.pushViewController(articleViewController, animated: true)
         }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = viewModel.swiftNews?.data.children[indexPath.row].data.thumbnailHeight ?? 0
+        return CGFloat(height + 24);
     }
 }
