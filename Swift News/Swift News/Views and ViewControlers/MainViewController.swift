@@ -40,8 +40,11 @@ class MainViewController: UIViewController {
     
     @objc private func listen(notification: Notification) {
         DispatchQueue.main.async { [weak self] in
-            self?.setupNewsTableUI()
-            self?.newsTable.reloadData()
+            if !(notification.object is Error) {
+                self?.setupNewsTableUI()
+                self?.newsTable.reloadData()
+            }
+            
         }
     }
 }
