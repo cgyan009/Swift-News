@@ -9,19 +9,21 @@ import UIKit
 
 class ArticleViewController: UIViewController {
 
+    private enum Constants {
+        static let selfThumbnail = "self"
+    }
     var newsItem: ChildData? {
         didSet {
             guard let newsItem = newsItem else {
                 return
             }
-            print(newsItem.selftext)
             articleBody.text = newsItem.selftext
             
             if let height = newsItem.thumbnailHeight, let width = newsItem.thumbnailWidth {
                 imageWidth = width
                 imageHeight = height
             }
-            if newsItem.thumbnail != "self" {
+            if newsItem.thumbnail != Constants.selfThumbnail {
                 if let url = URL(string: newsItem.thumbnail) {
                     imageView.loadImage(from: url)
                 }
@@ -36,7 +38,6 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-
     }
 }
 
@@ -48,6 +49,7 @@ extension ArticleViewController {
         view.addSubview(articleBody)
         view.addSubview(imageView)
 
+        articleBody.isEditable = false
         articleBody.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         

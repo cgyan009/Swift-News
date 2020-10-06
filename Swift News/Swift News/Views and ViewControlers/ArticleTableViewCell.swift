@@ -31,10 +31,13 @@ class ArticleTableViewCell: UITableViewCell {
     private func setupCell(width: Int, height: Int) {
         contentView.addSubview(titleLabel)
         contentView.addSubview(newsImageView)
+        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         newsImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             newsImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             newsImageView.widthAnchor.constraint(equalToConstant: CGFloat(width)),
             newsImageView.heightAnchor.constraint(equalToConstant: CGFloat(height)),

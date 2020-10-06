@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
         static let cellId = "newsCell"
         static let title = "Swift News"
         static let loading = "Loading Data ..."
-        static let cellHeightOffset = 24
+        static let cellHeightOffset = 36
     }
     
     private lazy var viewModel = NewsViewModel()
