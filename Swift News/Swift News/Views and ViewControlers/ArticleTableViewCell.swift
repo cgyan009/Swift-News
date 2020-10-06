@@ -11,22 +11,16 @@ class ArticleTableViewCell: UITableViewCell {
 
     let titleLabel = UILabel()
     let newsImageView = UIImageView()
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private enum Constants {
+        static let selfUrl = "self"
     }
-    
+        
     func set(newsItem: ChildData) {
         titleLabel.text = newsItem.title
         let width = newsItem.thumbnailWidth ?? 0
         let height = newsItem.thumbnailHeight ?? 0
-        if newsItem.url != "self" {
+        if newsItem.url != Constants.selfUrl {
             if let url = URL(string: newsItem.url) {
                 newsImageView.loadImage(from: url)
             }
@@ -45,12 +39,6 @@ class ArticleTableViewCell: UITableViewCell {
             newsImageView.widthAnchor.constraint(equalToConstant: CGFloat(width)),
             newsImageView.heightAnchor.constraint(equalToConstant: CGFloat(height)),
             newsImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            newsImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-
 }

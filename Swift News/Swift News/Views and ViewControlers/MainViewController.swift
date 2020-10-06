@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
         static let cellId = "newsCell"
         static let title = "Swift News"
         static let loading = "Loading Data ..."
+        static let cellHeightOffset = 24
     }
     
     private lazy var viewModel = NewsViewModel()
@@ -84,12 +85,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ArticleTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.cellId, for: indexPath) as! ArticleTableViewCell
-        cell.set(newsItem: (viewModel.swiftNews?.data.children[indexPath.row].data)!)
-        
-        
-//        cell.textLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.title
-//        cell.detailTextLabel?.text = viewModel.swiftNews?.data.children[indexPath.row].data.thumbnail
-        return cell
+        if let newsItem = viewModel.swiftNews?.data.children[indexPath.row].data {
+            cell.set(newsItem: newsItem)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -105,6 +107,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = viewModel.swiftNews?.data.children[indexPath.row].data.thumbnailHeight ?? 0
-        return CGFloat(height + 24);
+        return CGFloat(height + Constants.cellHeightOffset);
     }
 }
